@@ -32,8 +32,10 @@ dst_region="us-east-1"
 
 # List all buckets in the source region
 buckets=$(aws --region $src_region s3 ls | awk '{print $3}')
-
+mumbai_buckets=$(aws --region $src_region s3 ls | awk '{print $3}')
 # Loop through each bucket and copy it to the destination region
 for bucket in $buckets; do
-  aws s3 cp s3://$bucket s3://$bucket --recursive --region $src_region --region $dst_region
+  for bucket2 in $mumbai_buckets; do
+    aws s3 cp s3://$bucket s3://$bucket2 --recursive --region $src_region --region $dst_region
+  done
 done
