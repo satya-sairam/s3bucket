@@ -4,6 +4,7 @@
 buckets=(
   "singapoebucket1"
   "singapoebucket2"
+  "mptybucket"
 )
 
 # Source region
